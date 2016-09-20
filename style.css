@@ -1,0 +1,68 @@
+ul, ol {
+	list-style-type: none;
+}
+
+
+#input {
+	width: 150px;
+	padding: 5px;
+	margin-top: 25px;
+	margin-right: 15px;
+	float: left;
+}
+
+
+.dnevna_temperatura {
+	color: maroon;
+}
+
+#temeratures_div {
+	border: 1px solid blue;
+}
+
+.dnevna_temperatura {
+	width: 100px;
+	height: 50px;
+	display: inline-block;
+	border: 1px solid pink;
+}
+
+.city_text_box {
+	margin-top: 20px;
+	padding: 10px 0px;
+	font-size: 25px;
+}
+
+.t_unit_btn {
+	width: 30px;
+	height: 30px;
+	border: 1px solid black;
+	border-radius: 50%;
+	padding: 10px 5px 2px 10px;
+	font-size: 20px;
+	cursor: pointer;
+	background-color: lightblue;
+	opacity: 0.7;
+	display: inline-block;
+	margin: 15px 5px 0px 10px;
+
+}
+
+.t_unit_btn:hover {
+	opacity: 1;
+}
+
+.dnevna_t1, .dnevna_t2, .dnevna_t3, .dnevna_t4, .dnevna_t5, .dnevna_t6, .dnevna_t7  {
+	display: inline-block;
+	width: 10%;
+	font-size: 20px;
+}
+
+.dnevna_t0 {
+	/*width: 100%;*/
+	font-size: 30px;
+}
+
+/*.hidden {
+	display: none;
+}*/
