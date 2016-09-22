@@ -1,5 +1,4 @@
 var map;
-
 var apiStatic = "http://api.openweathermap.org/data/2.5/forecast/daily?APPID=dbf6c155e73cf512bb7ff0949aa4095e&cnt=8";
 var units = "&units=metric";
 var url;
@@ -8,7 +7,9 @@ var lon;
 var temperaturesDiv;
 var f = $("#f");
 var c = $("#c");
-    
+var minTemp = [];
+var maxTemp = [];
+var dateChart = [];    
 
 function initialize() {
     map = new google.maps.Map(document.getElementById('map'));
@@ -86,6 +87,44 @@ function initialize() {
             dayTemp.append(dayIcon);
             dayTemp.addClass("dnevna_t " + ("dnevna_t"+i));
             temperaturesDiv.append(dayTemp);
+
+            minTemp[i] = data.list[i].temp.min;
+            maxTemp[i] = data.list[i].temp.max;
+            dateChart[i] = dateFormatted;
         }
+        showChart();
+    }
+    function showChart() {
+        $('#container').highcharts({
+            chart: {
+                type: 'line'
+            },
+            title: {
+                text: 'Min/Max Temperatures'
+            },
+            xAxis: {
+                categories: dateChart
+            },
+            yAxis: {
+                title: {
+                    text: 'Temperature'
+                }
+            },
+            plotOptions: {
+                line: {
+                    dataLabels: {
+                        enabled: true
+                    },
+                    enableMouseTracking: false
+                }
+            },
+            series: [{
+                name: 'Max',
+                data: maxTemp
+            }, {
+                name: 'Min',
+                data: minTemp
+            }]
+        });
     }
 }
