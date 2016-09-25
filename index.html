@@ -6,27 +6,21 @@
 	<meta name="viewport" content="initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<!-- Facebooh Share -->
-	<!-- <meta property="og:url" content="http://rudic-i.github.io/fbtest" />
+	<meta property="og:url" content="http://rudic-i.github.io/fbtest" />
 	<meta property="og:type" content="website" />
 	<meta property="og:title" content="Weather Forecast" />
-	<meta property="og:description" content="7 days world weather forecast" /> -->
+	<meta property="og:description" content="7 days world weather forecast" />
 </head>
 <body>
 <!-- Load Facebook SDK for JavaScript -->
-	<!-- <div id="fb-root"></div>
+	<div id="fb-root"></div>
 	<script>(function(d, s, id) {
 	  var js, fjs = d.getElementsByTagName(s)[0];
 	  if (d.getElementById(id)) return;
 	  js = d.createElement(s); js.id = id;
 	  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
 	  fjs.parentNode.insertBefore(js, fjs);
-	}(document, 'script', 'facebook-jssdk'));</script> -->
-
-	<!-- Your share button code -->
-	<!-- <div class="fb-share-button" 
-		data-href="http://rudic-i.github.io/fbtest" 
-		data-layout="button_count">
-	</div> -->
+	}(document, 'script', 'facebook-jssdk'));</script>
 
 	<section id="user_select_location">
 		<div id="map"></div>
@@ -36,6 +30,7 @@
 			<li><div id="c" class="btn_c hidden">&#176; C</div></li>
 			<li><div id="show_chart_btn" class="hidden">Show chart</div></li>
 			<li><div id="hide_chart_btn" class="chart_btn">Hide chart</div></li>
+			<li id="fbbtn"><div class="fb-share-button" data-href="http://rudic-i.github.io/fbtest" data-layout="button_count"></div></li>
 	    </ul>
 		<div id="city"></div>
 		<div id="temperatures_div"></div>
