@@ -1,3 +1,4 @@
+var body = $("body");
 var map;
 var apiStatic = "http://api.openweathermap.org/data/2.5/forecast/daily?APPID=dbf6c155e73cf512bb7ff0949aa4095e&cnt=8";
 var units = "&units=metric";
@@ -12,6 +13,17 @@ var maxTemp = [];
 var dateChart = [];    
 
 function initialize() {
+
+    $.getJSON("http://ipinfo.io/json", function(data) {
+        var user = data.city;
+        var userLoc = "&q=" + user;
+        url = apiStatic + userLoc + units;
+        $.ajax({
+            url: url,
+            method: "GET"
+        }).done(getWeather);
+    });
+
     map = new google.maps.Map(document.getElementById('map'));
 
     var input = document.getElementById("input");
@@ -29,12 +41,19 @@ function initialize() {
 
     f.click(fahrenheit);
     function fahrenheit() {
+        c.addClass("t_unit_btn");
+        f.removeClass("t_unit_btn");
+        f.addClass("hidden");
         units = "&units=imperial";
         chooseLocation();
     };
 
     c.click(celsius);
     function celsius() {
+        c.removeClass("t_unit_btn");
+        c.addClass("hidden");
+        f.removeClass("hidden");
+        f.addClass("t_unit_btn");
         units = "&units=metric";
         chooseLocation();
     };
@@ -54,6 +73,7 @@ function initialize() {
     }
 
     function getWeather(data){
+        body.addClass("background");
         var city = $("#city");
         city.text(data.city.name + ", " + data.city.country);
         city.addClass("city_text_box");
@@ -72,29 +92,30 @@ function initialize() {
             var day = dateFull.getDate();
             var month = dateFull.getMonth();
             var dateFormatted = day + ". " + months[month];
-            var tempFormatted = Math.floor(data.list[i].temp.day);
+            var tempFormatted = Math.round(data.list[i].temp.max);
             var iconCode = data.list[i].weather[0].icon;
             var icon = $("<img src='http://openweathermap.org/img/w/" + iconCode + ".png'>");
             if (units === "&units=metric") {
-                dayTemp.html("<li>"+dateFormatted+"</li>" + 
-                            "<li>"+tempFormatted+degree+" C</li>") 
+                dayTemp.html('<li class="date_box">'+dateFormatted+'</li>' + 
+                            '<li class="t_box">'+tempFormatted+degree+' C</li>') 
             }
             if (units === "&units=imperial") {
-                dayTemp.html("<li>"+dateFormatted+"</li>" + 
-                            "<li>"+tempFormatted+degree+" F</li>") 
+                dayTemp.html('<li class="date_box">'+dateFormatted+'</li>' + 
+                            '<li class="t_box">'+tempFormatted+degree+' F</li>') 
             }
             dayIcon.html(icon);
             dayTemp.append(dayIcon);
-            dayTemp.addClass("dnevna_t " + ("dnevna_t"+i));
+            dayTemp.addClass("dnevna_t"+i);
             temperaturesDiv.append(dayTemp);
 
-            minTemp[i] = data.list[i].temp.min;
-            maxTemp[i] = data.list[i].temp.max;
+            minTemp[i] = Math.round(data.list[i].temp.min);
+            maxTemp[i] = Math.round(data.list[i].temp.max);
             dateChart[i] = dateFormatted;
         }
-        showChart();
+        chart();
     }
-    function showChart() {
+
+    function chart() {
         $('#container').highcharts({
             chart: {
                 type: 'line'
@@ -103,7 +124,7 @@ function initialize() {
                 text: 'Min/Max Temperatures'
             },
             xAxis: {
-                categories: dateChart
+                categories: dateChart.slice(1)
             },
             yAxis: {
                 title: {
@@ -120,11 +141,33 @@ function initialize() {
             },
             series: [{
                 name: 'Max',
-                data: maxTemp
+                data: maxTemp.slice(1)
             }, {
                 name: 'Min',
-                data: minTemp
+                data: minTemp.slice(1)
             }]
         });
+    }
+    var chartWrap = $("#chart_wrap");
+    var chartOn = $("#show_chart_btn");
+        chartOn.click(showChart);
+    var chartOff = $("#hide_chart_btn");
+        chartOff.click(hideChart);
+
+    function showChart(){
+        chartWrap.removeClass("hidden");
+        chartWrap.addClass("chart_show");
+        chartOn.removeClass("chart_btn");
+        chartOn.addClass("hidden");
+        chartOff.removeClass("hidden");
+        chartOff.addClass("chart_btn");
+    }
+    function hideChart(e){
+        chartWrap.removeClass("chart_show");
+        chartWrap.addClass("hidden");
+        chartOff.removeClass("chart_btn");
+        chartOff.addClass("hidden");
+        chartOn.removeClass("hidden");
+        chartOn.addClass("chart_btn");
     }
 }
