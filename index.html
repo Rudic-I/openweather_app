@@ -1,32 +1,54 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>prognoza</title>
+	<title>Weather Forecast</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="style.css">
+	<!-- Facebooh Share -->
+	<!-- <meta property="og:url" content="http://rudic-i.github.io/fbtest" />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="Weather Forecast" />
+	<meta property="og:description" content="7 days world weather forecast" /> -->
 </head>
 <body>
+<!-- Load Facebook SDK for JavaScript -->
+	<!-- <div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script> -->
 
-<section id="user_select_location">
-	<input type="text" id="input" placeholder="Unesite grad">
-    <div id="map"></div>
-	<article>
-		<div id="f" class="t_unit_btn">&#176; F</div>
-		<div id="c" class="t_unit_btn">&#176; C</div>
-	</article>
-	<div id="city"></div>
-	<div id="temperatures_div"></div>
-</section>
+	<!-- Your share button code -->
+	<!-- <div class="fb-share-button" 
+		data-href="http://rudic-i.github.io/fbtest" 
+		data-layout="button_count">
+	</div> -->
 
-<section id="chart">
-	<div id="container"></div>
-</section>
+	<section id="user_select_location">
+		<div id="map"></div>
+		<ul class="header_ul">
+			<li><input type="text" id="input" placeholder="Choose location"></li>
+			<li><div id="f" class="t_unit_btn btn_f">&#176; F</div></li>
+			<li><div id="c" class="btn_c hidden">&#176; C</div></li>
+			<li><div id="show_chart_btn" class="hidden">Show chart</div></li>
+			<li><div id="hide_chart_btn" class="chart_btn">Hide chart</div></li>
+	    </ul>
+		<div id="city"></div>
+		<div id="temperatures_div"></div>
+		<article id="chart_wrap">
+			<div id="container"></div>
+		</article>
+	</section>
+
+
 
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
-<script src="http://code.highcharts.com/highcharts.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPhNmFm1qVyadYTqCDpSv2tO5Hs42QHzo&callback=initialize&libraries=places"
-    async defer></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPhNmFm1qVyadYTqCDpSv2tO5Hs42QHzo&callback=initialize&libraries=places" async defer></script>
 <script type="text/javascript" src="main.js"></script>
 </body>
 </html>
