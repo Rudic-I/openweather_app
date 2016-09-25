@@ -165,7 +165,6 @@ body {
 
 .dnevna_t1 li, .dnevna_t2 li, .dnevna_t3 li, .dnevna_t4 li, .dnevna_t5 li, .dnevna_t6 li, .dnevna_t7 li {
 	padding: 3px 3px 3px 0px;
-
 }
 
 .t_box {
@@ -194,7 +193,7 @@ body {
 	margin: 0px auto;
 }
 
-@media screen and (min-width: 320px) and (max-width: 480px) {
+@media screen and (min-width: 320px) and (max-width: 600px) {
 	.dnevna_t1, .dnevna_t2, .dnevna_t3, .dnevna_t4, .dnevna_t5, .dnevna_t6, .dnevna_t7  {
 	display: inline-block;
 	width: 22%;
@@ -222,6 +221,60 @@ body {
 
 	.header_ul li {
 		display: block;
+	}
+
+	#fbbtn {
+	float: right;
+	margin-top: -160px;
+	margin-right: 20px;
+	}
+
+	#city {
+		margin-left: 30px;
+	}
+	.t_box {
+		font-size: 26px;
+	}
+
+	.date_box {
+		font-size: 14px;
+	}
+}
+
+@media screen and (min-width: 600px) and (max-width: 850px) {
+	.dnevna_t1, .dnevna_t2, .dnevna_t3, .dnevna_t4, .dnevna_t5, .dnevna_t6, .dnevna_t7  {
+	display: inline-block;
+	width: 12%;
+	margin-right: 8px;
+	margin-top: 10px;
+	}
+
+	.chart_btn {
+		float: left;
+		width: 90%;
+		text-align: left;
+		margin-bottom: 20px;
+		margin-top: 15px;
+		margin-left: 30px;
+	}
+
+	.t_unit_btn {
+		float: left;
+		width: 90%;
+		margin-left: 30px;
+		margin-bottom: 0px;
+		margin-top: 5px;
+		text-align: left;
+	}
+
+	.header_ul li {
+		display: block;
+	}
+
+	#fbbtn {
+	float: right;
+	margin-top: -160px;
+	margin-right: 20px;
 	}
 
 	#city {
