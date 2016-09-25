@@ -119,6 +119,11 @@ body {
 	cursor: pointer;
 	display: inline-block;
 	margin: 30px 20px 30px 20px;
+	opacity: 0.7;
+}
+
+.t_unit_btn:hover {
+	opacity: 1;
 }
 
 /*.btn_f {
@@ -141,11 +146,15 @@ body {
 	cursor: pointer;
 	display: inline-block;
 	margin: 30px 20px 30px 20px;
+	opacity: 0.7;
 	/*position: fixed;
 	left: 290px;
 	top: 0%;*/
 }
 
+.chart_btn:hover {
+	opacity: 1;
+}
 .dnevna_t1, .dnevna_t2, .dnevna_t3, .dnevna_t4, .dnevna_t5, .dnevna_t6, .dnevna_t7  {
 	display: inline-block;
 	width: 10%;
@@ -180,4 +189,9 @@ body {
 
 .dnevna_t0 .date_box {
 	display: none;
+}
+
+#highchart-0 {
+	width: 980px;
+	margin: 0px auto;
 }
