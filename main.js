@@ -1,4 +1,5 @@
 var body = $("body");
+var output = $("#geo_output");
 var map;
 var apiStatic = "http://api.openweathermap.org/data/2.5/forecast/daily?APPID=dbf6c155e73cf512bb7ff0949aa4095e&cnt=8";
 var units = "&units=metric";
@@ -13,16 +14,34 @@ var maxTemp = [];
 var dateChart = [];    
 
 function initialize() {
-
-    $.getJSON("http://ipinfo.io/json", function(data) {
-        var user = data.city;
-        var userLoc = "&q=" + user;
-        url = apiStatic + userLoc + units;
-        $.ajax({
-            url: url,
-            method: "GET"
-        }).done(getWeather);
-    });
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(getCoords, showError);
+    }  
+    else {
+        output.html("Geolocation is not supported by this browser. Please choose location.");
+    }
+    function getCoords(position) {
+        var geoLat = "&lat=" + position.coords.latitude;
+        var geoLon = "&lon=" + position.coords.longitude; 
+        url = apiStatic + geoLon + geoLat + units;
+        getApi();
+    };
+    function showError(error) {
+        switch(error.code) {
+            case error.PERMISSION_DENIED:
+                output.text("User denied the request for Geolocation. Please choose location.")
+                break;
+            case error.POSITION_UNAVAILABLE:
+                output.text("Location information is unavailable. Please choose location.")
+                break;
+            case error.TIMEOUT:
+                output.text("The request to get user location timed out. Please choose location.")
+                break;
+            case error.UNKNOWN_ERROR:
+                output.text("An unknown error occurred. Please choose location.")
+                break;
+        }
+    };    
 
     map = new google.maps.Map(document.getElementById('map'));
 
