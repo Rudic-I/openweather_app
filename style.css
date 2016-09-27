@@ -68,6 +68,11 @@ body {
   	font-family: "Open Sans", sans-serif;
 }
 
+#geo_output {
+	margin-left: 20px;
+	font-size: 18px;
+}
+
 #user_select_location {
 	width: 98%;
 	margin: 0px auto;
