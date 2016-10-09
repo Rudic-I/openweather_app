@@ -167,7 +167,7 @@ function initialize() {
             }]
         });
     }
-    var chartWrap = $("#chart_wrap");
+    var chartWrap = $(".chart_container");
     var chartOn = $("#show_chart_btn");
         chartOn.click(showChart);
     var chartOff = $("#hide_chart_btn");

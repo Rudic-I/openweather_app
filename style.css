@@ -79,18 +79,6 @@ body {
 	height: 100%;
 }
 
-#chart_wrap {
-	width: 85%;
-	margin: 0px auto;
-	margin-top: 20px;
-	overflow: hidden;
-	margin-bottom: 20px;
-}
-
-.chart_show {
-	display: initial;
-}
-
 #temperatures_div {
 	margin-top: 20px;
 	margin-bottom: 20px;
@@ -193,9 +181,27 @@ body {
 	display: none;
 }
 
-#highchart-0 {
-	width: 980px;
-	margin: 0px auto;
+#chart_wrap {
+	width: 85%;
+	margin: 20px auto;
+	overflow: hidden;
+}
+
+.chart_container {
+	width: 100%;
+}
+
+.chart_show {
+	display: initial;
+}
+
+.highcharts-root {
+	width: 100%!important;
+}
+
+#highcharts-0 {
+	width: 100%!important;
+	margin: 20px auto;
 }
 
 @media screen and (min-width: 320px) and (max-width: 600px) {
@@ -244,6 +250,12 @@ body {
 	.date_box {
 		font-size: 14px;
 	}
+	#chart_wrap {
+		width: 98%;
+	}
+	.highcharts-root {
+		width: initial;
+	}
 }
 
 @media screen and (min-width: 600px) and (max-width: 850px) {
@@ -291,5 +303,11 @@ body {
 
 	.date_box {
 		font-size: 14px;
+	}
+	#chart_wrap {
+		width: 98%;
+	}
+	.highcharts-root {
+		width: initial;
 	}
 }
