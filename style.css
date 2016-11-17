@@ -234,6 +234,12 @@ body {
 	.date_box {
 		font-size: 14px;
 	}
+	#chart_wrap {
+		width: 98%;
+	}
+	.highcharts-root {
+		width: initial;
+	}
 }
 
 @media screen and (min-width: 600px) and (max-width: 850px) {
@@ -281,5 +287,11 @@ body {
 
 	.date_box {
 		font-size: 14px;
+	}
+	#chart_wrap {
+		width: 98%;
+	}
+	.highcharts-root {
+		width: initial;
 	}
 }
