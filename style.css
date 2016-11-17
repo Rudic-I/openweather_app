@@ -47,15 +47,6 @@ table {
 	border-spacing: 0;
 }
 
-ul, ol {
-	list-style-type: none;
-}
-
-* {
-	margin: 0px;
-	padding: 0px;
-}
-
 .hidden {
 	display: none;
 }
@@ -80,7 +71,7 @@ body {
 }
 
 #chart_wrap {
-	width: 85%;
+	width: 98%;
 	margin: 0px auto;
 	margin-top: 20px;
 	overflow: hidden;
@@ -89,6 +80,10 @@ body {
 
 .chart_show {
 	display: initial;
+	margin: 0px auto;
+	margin-top: 20px;
+	overflow: hidden;
+	margin-bottom: 20px;
 }
 
 #temperatures_div {
@@ -191,11 +186,6 @@ body {
 
 .dnevna_t0 .date_box {
 	display: none;
-}
-
-#highchart-0 {
-	width: 980px;
-	margin: 0px auto;
 }
 
 @media screen and (min-width: 320px) and (max-width: 600px) {
