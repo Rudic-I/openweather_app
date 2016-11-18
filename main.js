@@ -4,6 +4,7 @@ var lat;
 var lon;
 var output = $("#geo_output");
 var map;
+var address;
 var temperaturesDiv = $("#temperatures_div");
 var f = $("#f");
 var c = $("#c");
@@ -39,16 +40,16 @@ function getCoords(position) {
 function showError(error) {
     switch(error.code) {
         case error.PERMISSION_DENIED:
-            output.text("User denied the request for Geolocation. Please choose location.")
+            output.text("User denied the request for Geolocation. Please choose location.");
             break;
         case error.TIMEOUT:
-            output.text("The request to get user location timed out. Please choose location.")
+            output.text("The request to get user location timed out. Please choose location.");
             break;
         case error.UNKNOWN_ERROR:
-            output.text("An unknown error occurred. Please choose location.")
+            output.text("An unknown error occurred. Please choose location.");
             break;
         default:
-            output.text("Location information is unavailable. Please choose location.")
+            output.text("Location information is unavailable. Please choose location.");
     }
 };
 
@@ -60,8 +61,9 @@ function initialize() {
 
     autocomplete.bindTo("bounds", map);
 
-    google.maps.event.addListener(autocomplete, 'place_changed',function(){
-        var place=autocomplete.getPlace();
+    google.maps.event.addListener(autocomplete, 'place_changed', function(){
+        var place = autocomplete.getPlace();
+        address = place.formatted_address;
         lat = "&lat=" + place.geometry.location.lat(),
         lon = "&lon=" + place.geometry.location.lng();
         url = api + lon + lat;
@@ -80,8 +82,13 @@ function getWeather(data){
     output.empty();
     temperaturesDiv.empty();
     var city = $("#city");
+    if(address) {
+        city.text(address);
+    }
+    else {
         city.text(data.city.name + ", " + data.city.country);
-        city.addClass("city_text_box");        
+    }
+    city.addClass("city_text_box");        
     var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep",
                 "Oct", "Nov", "Dec"];
 
